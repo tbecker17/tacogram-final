@@ -11,10 +11,15 @@
           anonymous
         <% end %>
       </h4>
+      <%if post.uploaded_image.attached?%>
+      <img src ="<%= url_for(post.uploaded_image)%>">
       <!-- conditionally display attached file if post.uploaded_image.attached? -->
         <!-- use url_for(post.uploaded_image) as attached file's url -->
       <!-- otherwise display original image url from database column -->
+        <%else %>
+        
         <img src="<%= post["image"] %>" class="img-fluid">
+        <%end%>
       <!-- end -->
       <p><%= post["body"] %></p>
     </div>
